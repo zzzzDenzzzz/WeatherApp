@@ -1,6 +1,7 @@
 ﻿@model WeatherApiResponse
 @{
     ViewData["Title"] = "Search";
+    string icon = $"https://openweathermap.org/img/wn/{@Model.weather[0].icon}.png";
 }
 
 <div class="container">
@@ -16,7 +17,8 @@
             @* <img src="@item." class="card-img-top" alt="..."> *@
             <div class="card-body">
                 <h6 class="card-text">Country : @Model.sys.country</h6>
-                <img src="https://openweathermap.org/img/wn/{@Model.weather[0].icon}.png" class="card-img-top" alt="...">
+                @* <img src="https://openweathermap.org/img/wn/{@Model.weather[0].icon}+".png" class="card-img-top" alt="..."> *@
+                <img src="{@icon}" class="card-img-top" alt="...">
                 <p class="card-text">Temp : @Model.main.temp C</p>
                 <p class="card-text">Temp_max : @Model.main.temp_max C</p>
                 <p class="card-text">Temp_min : @Model.main.temp_min C</p>
