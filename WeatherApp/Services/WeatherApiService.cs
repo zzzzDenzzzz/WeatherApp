@@ -24,10 +24,7 @@ namespace WeatherApp.Services
             var response = await httpClient.GetAsync($"{BaseUrl}weather?q={title}&appid={ApiKey}&units=metric");
             var json = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<WeatherApiResponse>(json);
-            //if (result.Response == "False")
-            //{
-            //    throw new Exception(result.Error);
-            //}
+
             return result;
         }
     }

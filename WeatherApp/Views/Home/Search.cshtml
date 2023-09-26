@@ -1,7 +1,7 @@
 ﻿@model WeatherApiResponse
 @{
     ViewData["Title"] = "Search";
-    string icon = $"https://openweathermap.org/img/wn/{@Model.weather[0].icon}.png";
+    string icon = "https://openweathermap.org/img/wn/" + Model.weather[0].icon + ".png";
 }
 
 <div class="container">
@@ -13,20 +13,18 @@
     {
         <p>Search results by title : @ViewBag.searchWeather</p>
 
-        <div class="card col-3" style="width: 18rem;">
-            @* <img src="@item." class="card-img-top" alt="..."> *@
+        <div class="card mb-1" style="width: 18rem;">
             <div class="card-body">
                 <h6 class="card-text">Country : @Model.sys.country</h6>
-                @* <img src="https://openweathermap.org/img/wn/{@Model.weather[0].icon}+".png" class="card-img-top" alt="..."> *@
-                <img src="{@icon}" class="card-img-top" alt="...">
-                <p class="card-text">Temp : @Model.main.temp C</p>
-                <p class="card-text">Temp_max : @Model.main.temp_max C</p>
-                <p class="card-text">Temp_min : @Model.main.temp_min C</p>
+                <img src=@icon class="rounded mx-auto d-block" alt="...">
+                <p class="card-text">Temp : @Model.main.temp &deg;C</p>
+                <p class="card-text">Temp_max : @Model.main.temp_max &deg;C</p>
+                <p class="card-text">Temp_min : @Model.main.temp_min &deg;C</p>
                 <p class="card-text">Pressure : @Model.main.pressure hPa</p>
                 <p class="card-text">Clouds : @Model.clouds.all %</p>
                 <p class="card-text">Humidity : @Model.main.humidity %</p>
-                <p class="card-text">Wind Direction : @Model.wind.deg</p>
-                <p class="card-text">Wind Speed : @Model.wind.speed</p>
+                <p class="card-text">Wind Direction : @Model.wind.deg&deg;</p>
+                <p class="card-text">Wind Speed : @Model.wind.speed m/s</p>
             </div>
         </div>
     }
