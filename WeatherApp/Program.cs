@@ -1,17 +1,21 @@
 using WeatherApp.Options;
+using WeatherApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
-
 builder.Services.Configure<WeatherApiOption>(options =>
 {
     options.ApiKey = builder.Configuration["ConnectionString:ApiKey"];
     options.BaseUrl = builder.Configuration["ConnectionString:BaseUrl"];
 });
+
+builder.Services.AddTransient<IWeatherApiService, WeatherApiService>();
+builder.Services.AddHttpClient();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

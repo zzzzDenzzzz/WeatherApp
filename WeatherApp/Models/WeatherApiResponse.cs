@@ -1,4 +1,4 @@
-﻿public class Rootobject
+﻿public class WeatherApiResponse
 {
     public Coord coord { get; set; }
     public Weather[] weather { get; set; }

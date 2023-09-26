@@ -1,0 +1,35 @@
+﻿@model WeatherApiResponse
+@{
+    ViewData["Title"] = "Search";
+}
+
+<div class="container">
+    @if (ViewBag.errorMessages != null)
+    {
+        <h1 class="text-danger">@ViewBag.errorMessages</h1>
+    }
+    else if (!string.IsNullOrWhiteSpace(@ViewBag.searchWeather))
+    {
+        <p>Search results by title : @ViewBag.searchWeather</p>
+
+        <div class="card col-3" style="width: 18rem;">
+            @* <img src="@item." class="card-img-top" alt="..."> *@
+            <div class="card-body">
+                <h6 class="card-text">Country : @Model.sys.country</h6>
+                <img src="https://openweathermap.org/img/wn/{@Model.weather[0].icon}.png" class="card-img-top" alt="...">
+                <p class="card-text">Temp : @Model.main.temp C</p>
+                <p class="card-text">Temp_max : @Model.main.temp_max C</p>
+                <p class="card-text">Temp_min : @Model.main.temp_min C</p>
+                <p class="card-text">Pressure : @Model.main.pressure hPa</p>
+                <p class="card-text">Clouds : @Model.clouds.all %</p>
+                <p class="card-text">Humidity : @Model.main.humidity %</p>
+                <p class="card-text">Wind Direction : @Model.wind.deg</p>
+                <p class="card-text">Wind Speed : @Model.wind.speed</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Not results</p>
+    }
+</div>
